@@ -2,10 +2,10 @@
   "name": "amp-server-functions",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug" : "node --inspect node_modules/.bin/functions-framework --source=build/ --target=handler"
+    "debug": "node --inspect node_modules/.bin/functions-framework --source=build/ --target=handler"
   },
   "author": "",
   "license": "ISC",
