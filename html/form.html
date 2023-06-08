@@ -1,0 +1,71 @@
+<!doctype html>
+<html ⚡4email data-css-strict>
+<head>
+  <meta charset="utf-8">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+  <script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>
+  <style amp4email-boilerplate>body{visibility:hidden}</style>
+  <style amp-custom>
+    h1 {
+      margin: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello, I am an AMP EMAIL!</h1>
+  
+  <template type="amp-mustache" id="form-response-template">
+    {{#id}}
+    <p>
+      You submitted action {{id}}
+    </p>
+    {{/id}}
+    {{#error}}
+    <p>
+      Oops. An error occurred: {{error}}
+    </p>
+    {{/error}}
+    {{#status}}
+    <p>
+      Request already submitted.
+    </p>
+    {{/status}}
+  </template>
+  
+  <div style="height: 100px; width: 300px; border: 1px solid; padding: 10px;">
+    <form id="form1" method="post" action-xhr="https://amp.dev/documentation/examples/api/echo">
+      <input type="hidden" name="id" value="1" />
+        <button on="tap:form1.submit">
+      		Apply Action
+    	</button>
+      	<div submitting>Applying action...</div>
+      	<div submit-error>Error occurred...</div>
+      	<div submit-success template="form-response-template"></div>
+    </form>
+  </div>
+  <div style="height: 100px; width: 300px; border: 1px solid; padding: 10px;">
+    <form id="form2" method="post" action-xhr="https://amp.dev/documentation/examples/api/echo">
+      <input type="hidden" name="error" value="You are not authenticated!" />
+        <button on="tap:form2.submit">
+      		Apply Action
+    	</button>
+      	<div submitting>Applying action...</div>
+      	<div submit-error>Error occurred...</div>
+      	<div submit-success template="form-response-template"></div>
+    </form>
+  </div>
+  <div style="height: 100px; width: 300px; border: 1px solid; padding: 10px;">
+    <form id="form3" method="post" action-xhr="https://amp.dev/documentation/examples/api/echo">
+      <input type="hidden" name="status" value="submitted" />
+        <button on="tap:form3.submit">
+      		Apply Action
+    	</button>
+      	<div submitting>Applying action...</div>
+      	<div submit-error>Error occurred...</div>
+      	<div submit-success template="form-response-template"></div>
+    </form>
+  </div>
+</body>
+</html>
