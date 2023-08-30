@@ -1,21 +1,18 @@
 export const query = (req) => {
     console.log("Received query: " + req.path);
 
-    if (req.path === '/query/1') {
-        return response("active", "/action/1");
+    if (req.query['request'] === 'VALID_QUERY_REQUEST_PARAM') {
+        return response({'items': 
+            [
+                {'request': 'SUBSCRIBE_BOOK_1', 'title': 'Harry Potter and the Philosophers Stone'},
+                {'request': 'SUBSCRIBE_BOOK_2', 'title': 'Harry Potter and the Chamber of Secrets'},
+                {'request': 'SUBSCRIBE_BOOK_3', 'title': 'Harry Potter and the Prisoner of Azkaban'}
+            ]});
     }
 
-    if (req.path === '/query/2') {
-        return response("dismissed", "/action/2");
-    }
-
-    if (req.path === '/query/3') {
-        return response("expired", "/action/3");
-    }
-
-    return response("expired", "/action/4");
+    return response({'response': {'message': 'Invalid request'}}, 400);
 };
 
-const response = (status: string, url: string) => {
-    return {"status": status, "url": url};
+const response = (response: any, status: number = 200) => {
+    return {"status": status, "response": response};
 }
