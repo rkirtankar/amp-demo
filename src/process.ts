@@ -27,12 +27,12 @@ export function process(request: string): any {
 }
 
 export const books = [
-    "Harry Potter and the Philosophers Stone",
-    "Harry Potter and the Chamber of Secrets",
-    "Harry Potter and the Prisoner of Azkaban"
+    {title: "Harry Potter and the Philosophers Stone", author: 'JK Rowling'},
+    {title: "Harry Potter and the Chamber of Secrets", author: 'JK Rowling'},
+    {title: "Harry Potter and the Prisoner of Azkaban", author: 'JK Rowling'}
 ];
 
-const response = function(book: string, subscription: string) {
+const response = function(book: {title: string, author: string}, subscription: string) {
     return {status: 200, response: {'book': book, subscription: subscription}};
 };
 
